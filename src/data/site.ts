@@ -1,11 +1,16 @@
 /**
  * All portfolio content lives in this file.
- * Edit the values below and the whole site updates — no component edits needed.
+ * Edit the values below and the whole site updates â€” no component edits needed.
  */
+
+/** Which brand logo a project card shows. */
+export type LogoKey = "digifleet" | "digifuel" | "digiscm" | "dignote";
 
 export type Project = {
   slug: string;
   title: string;
+  /** Brand logo from the Digital Group ID kit. */
+  logo: LogoKey;
   /** One line used on the card. */
   summary: string;
   /** Longer paragraph, shown when a project is expanded. */
@@ -36,16 +41,15 @@ export type SiteConfig = {
 };
 
 export const siteConfig: SiteConfig = {
-  // TODO: ganti nama & detail di sini
-  name: "ADS Code",
-  title: "ADS Code — Portfolio of Vibecoded Products",
+  name: "Hendra",
+  title: "Hendra â€” Portfolio of Vibecoded Products",
   role: "Vibe Coder & Product Builder",
   tagline:
-    "I build and ship real products with AI — from a vague idea to a live URL with real users, fast.",
+    "I build and ship real products with AI â€” from a vague idea to a live URL with real users, fast.",
   intro:
     "Four production web apps built end to end: fleet management, supply chain, fuel tracking, and shared household finance. Every one of them went from problem statement to deployed software without a traditional development team.",
   location: "Indonesia",
-  email: "", // isi kalau mau tombol email muncul
+  email: "hendra@synctrax.id",
   github: "https://github.com/adscode24",
   socials: [{ label: "GitHub", href: "https://github.com/adscode24" }],
   stats: [
@@ -73,6 +77,7 @@ export const projects: Project[] = [
   {
     slug: "digifleet",
     title: "DigiFleet",
+    logo: "digifleet",
     summary: "SaaS transport management system for managing a company fleet.",
     description:
       "A fleet management product built for companies running their own vehicles. Vehicles, drivers, and trips are managed in one system with live location on a map, and it ships as a native Android and iOS app as well as a web dashboard. The architecture is multi-tenant SaaS with subscription billing, so it works for one company today and many tomorrow.",
@@ -90,6 +95,7 @@ export const projects: Project[] = [
   {
     slug: "digi-scm",
     title: "DigiSCM",
+    logo: "digiscm",
     summary:
       "Measures distribution team productivity, with an accounting book built in.",
     description:
@@ -108,6 +114,7 @@ export const projects: Project[] = [
   {
     slug: "digifuel",
     title: "DigiFuel",
+    logo: "digifuel",
     summary: "Tracks fuel spending and transport costs across daily vehicle use.",
     description:
       "Fuel and transport expense tracking built for people who spend most of their working life in a vehicle. Every fuel purchase and transport cost is logged against a vehicle, turning a pile of receipts into a monthly number you can actually see. It installs like a native app, keeps working with poor connectivity, and exports clean reports when finance asks for them.",
@@ -125,6 +132,7 @@ export const projects: Project[] = [
   {
     slug: "dignote",
     title: "DigiNote",
+    logo: "dignote",
     summary: "Shared finance tracking for couples keeping one set of books.",
     description:
       "A household finance app built for two people and one shared set of books. Both partners log income, expenses, and bills in the same place, which removes the end-of-month ritual of comparing screenshots and figuring out where the money went. Simple enough that both people actually keep using it.",
@@ -189,7 +197,7 @@ export const processSteps: {
     step: "03",
     title: "Build with AI as a pair",
     description:
-      "I write the intent, review what comes back, and fix what is wrong. Reading the code and correcting it is the actual work — that step is what separates a demo from a product.",
+      "I write the intent, review what comes back, and fix what is wrong. Reading the code and correcting it is the actual work â€” that step is what separates a demo from a product.",
   },
   {
     step: "04",
@@ -201,6 +209,6 @@ export const processSteps: {
 
 export const aboutParagraphs: string[] = [
   "I build software for problems that are too boring for most developers and too expensive for most businesses to keep ignoring: where the fleet actually is, what the distribution team actually did, what the fuel actually cost, where the household money actually went.",
-  "I came to this through vibe coding rather than a traditional engineering path — describing the problem, collaborating with AI on the implementation, and iterating on real code until it worked. That approach let me ship products across logistics and finance without years of prior domain experience.",
-  "All four products listed here are live and running on real subdomains. Not demos, not prototypes — used software, with native mobile builds where the work happens away from a desk.",
+  "I came to this through vibe coding rather than a traditional engineering path â€” describing the problem, collaborating with AI on the implementation, and iterating on real code until it worked. That approach let me ship products across logistics and finance without years of prior domain experience.",
+  "All four products listed here are live and running on real subdomains. Not demos, not prototypes â€” used software, with native mobile builds where the work happens away from a desk.",
 ];

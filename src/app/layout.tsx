@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Sora } from "next/font/google";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
 
@@ -13,8 +13,17 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Used by the inlined Digital Group ID brand logos. An SVG loaded through
+// <img> cannot fetch its own @imported font, so the wordmarks reference this
+// variable instead.
+const sora = Sora({
+  variable: "--font-sora",
+  subsets: ["latin"],
+  weight: "700",
+});
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://adscode24.vercel.app"),
+  metadataBase: new URL("https://vibecoding-portfolio-pi.vercel.app"),
   title: {
     default: siteConfig.title,
     template: `%s — ${siteConfig.name}`,
@@ -56,7 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-scroll-behavior="smooth"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${sora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-white text-ink">
         {children}

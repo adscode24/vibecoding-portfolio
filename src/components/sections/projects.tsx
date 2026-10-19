@@ -11,7 +11,7 @@ export function Projects() {
       <SectionHeading
         eyebrow="Selected work"
         title="Things I built and actually shipped"
-        description={`${shipped} projects across logistics, manufacturing, education, and brand. Most went from idea to a live URL in under a week. Filter by stack to dig in.`}
+        description={`${shipped} products across logistics, manufacturing, and personal finance. Most went from idea to a live URL in under a week — open any card for the detail.`}
       />
 
       <div className="mt-12">

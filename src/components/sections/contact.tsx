@@ -1,45 +1,58 @@
 import { siteConfig } from "@/data/site";
 import { SectionHeading, SectionShell } from "@/components/section";
 import { Reveal } from "@/components/reveal";
-import { ArrowUpRight, Github, Mail } from "@/components/icons";
+import { ContactForm } from "@/components/contact-form";
+import { Github, Mail } from "@/components/icons";
 
 export function Contact() {
-  const hasEmail = siteConfig.email.trim().length > 0;
-
   return (
     <SectionShell id="contact" className="border-b-0">
-      <div className="rounded-3xl border border-line bg-surface p-8 sm:p-12">
-        <SectionHeading
-          eyebrow="Contact"
-          title="Have a problem worth solving?"
-          description="I'm open to freelance work, product collaborations, and interesting side projects. The fastest way to reach me is GitHub — send a message or open an issue."
-        />
+      <SectionHeading
+        eyebrow="Contact"
+        title="Have a problem worth solving?"
+        description="I'm open to freelance work, product collaborations, and interesting side projects. Send a message and it lands straight in my inbox."
+      />
 
-        <Reveal delay={100}>
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <a
-              href={siteConfig.github}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-medium text-white transition-transform hover:-translate-y-0.5"
-            >
-              <Github className="h-4 w-4" />
-              Message me on GitHub
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
+      <Reveal delay={80}>
+        <div className="mt-12 grid gap-8 lg:grid-cols-[1.5fr_1fr] lg:gap-12">
+          <ContactForm email={siteConfig.email} />
 
-            {hasEmail ? (
+          <div className="space-y-4">
+            <div className="rounded-2xl border border-line bg-surface p-6">
+              <Mail className="h-5 w-5 text-accent" />
+              <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.15em] text-faint">
+                Email
+              </p>
               <a
                 href={`mailto:${siteConfig.email}`}
-                className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-5 py-3 text-sm font-medium transition-colors hover:border-ink"
+                className="mt-1 block break-all text-sm font-medium text-ink underline-offset-4 hover:underline"
               >
-                <Mail className="h-4 w-4" />
                 {siteConfig.email}
               </a>
-            ) : null}
+            </div>
+
+            <div className="rounded-2xl border border-line bg-surface p-6">
+              <Github className="h-5 w-5 text-accent" />
+              <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.15em] text-faint">
+                GitHub
+              </p>
+              <a
+                href={siteConfig.github}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="mt-1 inline-block break-all text-sm font-medium text-ink underline-offset-4 hover:underline"
+              >
+                adscode24
+              </a>
+            </div>
+
+            <p className="text-sm leading-relaxed text-muted">
+              Prefer to just look around first? The projects above are all live —
+              click any of them and try them yourself.
+            </p>
           </div>
-        </Reveal>
-      </div>
+        </div>
+      </Reveal>
     </SectionShell>
   );
 }
