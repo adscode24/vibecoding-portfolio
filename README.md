@@ -1,36 +1,117 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vibecoding Portfolio
 
-## Getting Started
+Personal portfolio site for the projects I build with AI coding tools.
 
-First, run the development server:
+Built with **Next.js 16** (App Router), **TypeScript**, and **Tailwind CSS v4**.
+Deployed on **Vercel**.
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm run start    # serve the production build
+npm run lint     # ESLint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing the content
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Almost everything lives in one file: [`src/data/site.ts`](src/data/site.ts).**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+You do not need to touch any component to change the content:
 
-## Learn More
+| What                | Where in `src/data/site.ts`        |
+| ------------------- | --------------------------------- |
+| Name, role, tagline | `siteConfig`                      |
+| Email, GitHub, links | `siteConfig`                     |
+| Hero stats           | `siteConfig.stats`               |
+| The "quick facts" box | `siteConfig.facts`               |
+| Navigation links     | `siteConfig.nav`                 |
+| Project cards        | `projects`                       |
+| Toolkit sections     | `stackGroups`                    |
+| "How I work" steps   | `processSteps`                   |
+| About paragraphs     | `aboutParagraphs`                |
 
-To learn more about Next.js, take a look at the following resources:
+### Adding a project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Append an entry to the `projects` array:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```ts
+{
+  slug: "my-new-app",
+  title: "My New App",
+  summary: "One line shown on the card.",
+  description: "Longer text shown when the Details button is opened.",
+  year: "2026",
+  status: "Live",              // "Live" shows a green dot, anything else grey
+  stack: ["Next.js", "TypeScript"],
+  highlights: ["Point one", "Point two"],
+  live: "https://my-app.vercel.app",   // optional
+  repo: "https://github.com/user/repo", // optional
+  featured: true,                       // optional
+}
+```
 
-## Deploy on Vercel
+Cards are automatically filtered by the technologies in `stack`, so a new tag
+creates its own filter pill.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Hiding or removing a project
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Delete it from the array. There is no `hidden` flag to forget about.
+
+## Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx        # Fonts, SEO metadata, <html> shell
+│   ├── page.tsx          # Section order
+│   └── globals.css       # Theme tokens and base styles
+├── components/
+│   ├── icons.tsx         # Inline SVG icons
+│   ├── reveal.tsx        # Scroll-in animation wrapper
+│   ├── section.tsx       # Shared section shell + heading
+│   ├── site-nav.tsx      # Sticky nav with scroll spy
+│   ├── site-footer.tsx
+│   └── sections/
+│       ├── hero.tsx
+│       ├── projects.tsx
+│       ├── project-explorer.tsx   # filtering + expandable cards
+│       ├── about.tsx
+│       ├── stack.tsx
+│       ├── process.tsx
+│       └── contact.tsx
+└── data/
+    └── site.ts           # ← all editable content
+```
+
+## Styling
+
+Colours and fonts are design tokens at the top of
+[`src/app/globals.css`](src/app/globals.css):
+
+```css
+@theme static {
+  --color-ink: #0a0a0a;
+  --color-muted: #6b7280;
+  --color-line: #e5e7eb;
+  --color-accent: #4f46e5;
+}
+```
+
+Change `--color-accent` to recolour the whole site.
+
+## Accessibility & performance notes
+
+- Reveal animations render content as **visible** on the server; the hidden
+  state is only applied after hydration to elements below the fold. The page is
+  fully readable with JavaScript disabled.
+- `prefers-reduced-motion` is respected.
+- The site is fully static and prerendered — no runtime server cost.
+
+## Deploying
+
+Push to GitHub and connect the repository at
+[vercel.com/new](https://vercel.com/new). Vercel detects Next.js automatically;
+no configuration is required.
