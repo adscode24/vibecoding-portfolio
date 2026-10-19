@@ -14,9 +14,9 @@ export type Project = {
   status: string;
   stack: string[];
   highlights: string[];
-  repo?: string;
   live?: string;
-  featured?: boolean;
+  /** Only rendered when the repo is public. */
+  repo?: string;
 };
 
 export type SiteConfig = {
@@ -41,29 +41,28 @@ export const siteConfig: SiteConfig = {
   title: "ADS Code — Portfolio of Vibecoded Products",
   role: "Vibe Coder & Product Builder",
   tagline:
-    "I turn messy operational problems into working web apps — fast, in public, and shipped to real users.",
+    "I build and ship real products with AI — from a vague idea to a live URL with real users, fast.",
   intro:
-    "Most of what I build starts as a rough idea and ends as a deployed product in the same week. I work with AI coding tools as a partner: describing the problem, iterating on real code, and refining until it's genuinely usable.",
+    "Four production web apps built end to end: fleet management, supply chain, fuel tracking, and shared household finance. Every one of them went from problem statement to deployed software without a traditional development team.",
   location: "Indonesia",
   email: "", // isi kalau mau tombol email muncul
   github: "https://github.com/adscode24",
-  socials: [
-    { label: "GitHub", href: "https://github.com/adscode24" },
-  ],
+  socials: [{ label: "GitHub", href: "https://github.com/adscode24" }],
   stats: [
-    { value: "10+", label: "Projects shipped" },
-    { value: "8", label: "Live deployments" },
-    { value: "3", label: "Business domains" },
-    { value: "100%", label: "AI-assisted builds" },
+    { value: "4", label: "Live products" },
+    { value: "4", label: "Custom subdomains" },
+    { value: "2", label: "Native mobile builds" },
+    { value: "100%", label: "AI-assisted" },
   ],
   facts: [
     { label: "Based in", value: "Indonesia" },
-    { label: "Focus", value: "Web apps, dashboards, internal tools" },
+    { label: "Focus", value: "SaaS, operations & logistics apps" },
     { label: "Method", value: "AI-assisted development" },
     { label: "Status", value: "Open to freelance & collaboration" },
   ],
   nav: [
-    { label: "Work", href: "#work" },    { label: "About", href: "#about" },
+    { label: "Work", href: "#work" },
+    { label: "About", href: "#about" },
     { label: "Stack", href: "#stack" },
     { label: "Process", href: "#process" },
     { label: "Contact", href: "#contact" },
@@ -72,117 +71,100 @@ export const siteConfig: SiteConfig = {
 
 export const projects: Project[] = [
   {
-    slug: "dashboard-gudang-batu-ceper",
-    title: "Dashboard Gudang Batu Ceper",
-    summary: "Warehouse operations dashboard for inventory and stock flow.",
+    slug: "digifleet",
+    title: "DigiFleet",
+    summary: "SaaS transport management system for managing a company fleet.",
     description:
-      "An internal dashboard that replaced manual spreadsheet tracking for a stone materials warehouse. Covers stock in/out, material movements, and reporting so the team can see current inventory without asking anyone.",
+      "A fleet management product built for companies running their own vehicles. Vehicles, drivers, and trips are managed in one system with live location on a map, and it ships as a native Android and iOS app as well as a web dashboard. The architecture is multi-tenant SaaS with subscription billing, so it works for one company today and many tomorrow.",
     year: "2026",
     status: "Live",
-    stack: ["HTML", "JavaScript", "Vercel"],
+    stack: ["React", "TypeScript", "Firebase", "Capacitor"],
     highlights: [
-      "Live inventory overview across material types",
-      "Stock in / stock out tracking",
-      "Deployed on Vercel, accessible on any device",
+      "Fleet, driver, and trip management in one system",
+      "Live vehicle location with interactive mapping",
+      "Native Android & iOS builds via Capacitor",
+      "Multi-tenant SaaS architecture with subscription billing",
     ],
-    live: "https://whbacep.vercel.app",
-    repo: "https://github.com/adscode24/dashboard-gudang-batu-ceper",
-    featured: true,
+    live: "https://fleet.digitalgroup.id/",
   },
   {
-    slug: "dashboard-produksi",
-    title: "Dashboard Produksi",
-    summary: "Production monitoring dashboard built for a manufacturing team.",
+    slug: "digi-scm",
+    title: "DigiSCM",
+    summary:
+      "Measures distribution team productivity, with an accounting book built in.",
     description:
-      "A production dashboard that gives the floor team a live picture of output, targets, and daily progress — replacing status updates that depended on someone remembering to send them.",
+      "An operations tool for distribution teams that answers a question spreadsheets never could: how productive was the field team this month? Activity is captured as it happens through QR scanning and location tracking, rather than reconstructed from paperwork at the end of the month. The accounting book lives in the same system, so the numbers and the ledger always agree.",
     year: "2026",
     status: "Live",
-    stack: ["HTML", "JavaScript", "Vercel"],
+    stack: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
     highlights: [
-      "Daily production output vs target",
-      "Simple, fast-loading interface",
-      "Works well on tablets used on the shop floor",
+      "Team productivity measured from real field activity",
+      "Integrated accounting book (buku keuangan)",
+      "QR scanning and location tracking for field verification",
+      "Reporting and spreadsheet export",
     ],
-    live: "https://dashboard-produksi-two.vercel.app",
-    repo: "https://github.com/adscode24/dashboard-produksi",
-    featured: true,
+    live: "https://scm.digitalgroup.id/",
   },
   {
-    slug: "pintarku",
-    title: "Pintarku",
-    summary: "Educational app that helps parents track their child's learning.",
+    slug: "digifuel",
+    title: "DigiFuel",
+    summary: "Tracks fuel spending and transport costs across daily vehicle use.",
     description:
-      "A learning companion for parents and kids. Parents set up activities and follow progress, turning a vague goal of 'help the kid study' into something trackable week to week.",
+      "Fuel and transport expense tracking built for people who spend most of their working life in a vehicle. Every fuel purchase and transport cost is logged against a vehicle, turning a pile of receipts into a monthly number you can actually see. It installs like a native app, keeps working with poor connectivity, and exports clean reports when finance asks for them.",
     year: "2026",
     status: "Live",
-    stack: ["TypeScript", "Next.js"],
+    stack: ["React", "TypeScript", "Firebase", "PWA"],
     highlights: [
-      "Typed end-to-end for fewer runtime bugs",
-      "Progress tracking per learning activity",
-      "Mobile-first layout for parents on the move",
+      "Per-vehicle fuel and transport cost history",
+      "Installable PWA with a native mobile build",
+      "Monthly reporting with charts and PDF export",
+      "Works reliably with intermittent connectivity",
     ],
-    live: "https://anakku-pintar.vercel.app",
-    repo: "https://github.com/adscode24/Pintarku",
+    live: "https://fuel.digitalgroup.id/",
   },
   {
-    slug: "digital-group-id",
-    title: "Digital Group ID",
-    summary: "Company website and landing presence for a digital group.",
+    slug: "dignote",
+    title: "DigiNote",
+    summary: "Shared finance tracking for couples keeping one set of books.",
     description:
-      "A clean marketing site for Digital Group ID, built to present services clearly and make it easy for prospective clients to reach out.",
+      "A household finance app built for two people and one shared set of books. Both partners log income, expenses, and bills in the same place, which removes the end-of-month ritual of comparing screenshots and figuring out where the money went. Simple enough that both people actually keep using it.",
     year: "2026",
     status: "Live",
-    stack: ["HTML", "CSS", "Vercel"],
+    stack: ["React", "TypeScript", "Supabase", "Tailwind CSS"],
     highlights: [
-      "Service-focused landing structure",
-      "Fast static build, strong Lighthouse scores",
-      "Zero-downtime deploys via Vercel",
+      "One shared ledger for both partners",
+      "Income, expense, and bill tracking in one place",
+      "Ends the monthly 'cari struk' reconciliation",
+      "Designed to stay simple enough for two people to maintain",
     ],
-    live: "https://digital-group-id.vercel.app",
-    repo: "https://github.com/adscode24/digital-group-id",
-  },
-  {
-    slug: "logo-design-skill",
-    title: "Logo Design Skill",
-    summary: "A reusable skill for generating brand logo concepts.",
-    description:
-      "An experiment in turning repeatable design work into a reusable building block — a packaged skill that produces consistent logo concepts instead of starting from a blank canvas every time.",
-    year: "2026",
-    status: "Public",
-    stack: ["HTML", "Design"],
-    highlights: [
-      "Reusable, documented design workflow",
-      "Consistent output across runs",
-      "Open-sourced for reuse",
-    ],
-    repo: "https://github.com/adscode24/logo-design-skill",
+    live: "https://note.digitalgroup.id/",
   },
 ];
 
 export const stackGroups: { title: string; items: string[] }[] = [
   {
     title: "Languages",
-    items: ["TypeScript", "JavaScript", "HTML", "CSS", "SQL", "Python"],
+    items: ["TypeScript", "JavaScript", "HTML", "CSS", "SQL", "Bash"],
   },
   {
     title: "Frontend",
-    items: ["Next.js", "React", "Tailwind CSS", "Vite", "HTML5"],
+    items: ["React", "Vite", "Tailwind CSS", "shadcn/ui", "Radix UI", "Recharts", "React Leaflet"],
+  },
+  {
+    title: "Mobile",
+    items: ["Capacitor", "Android", "iOS", "PWA", "Local notifications"],
   },
   {
     title: "Backend & Data",
-    items: ["Node.js", "REST APIs", "PostgreSQL", "Supabase", "Firebase"],
+    items: ["Firebase", "Supabase", "Firestore", "PostgreSQL", "Express", "Stripe"],
   },
   {
     title: "AI-assisted",
-    items: ["Cursor", "Claude Code", "GitHub Copilot", "v0", "OpenCode"],
+    items: ["Claude Code", "Cursor", "GitHub Copilot", "OpenCode", "Google GenAI"],
   },
   {
     title: "Platform & Ops",
-    items: ["Vercel", "GitHub Actions", "Git", "Docker", "Android"],
-  },
-  {
-    title: "Product",
-    items: ["Figma", "Postman", "Notion", "Agile/Scrum"],
+    items: ["Vercel", "GitHub Actions", "Git", "Firestore rules", "Chrome DevTools"],
   },
 ];
 
@@ -193,32 +175,32 @@ export const processSteps: {
 }[] = [
   {
     step: "01",
-    title: "Understand the problem",
+    title: "Find the real problem",
     description:
-      "Sit with the person who has the pain. Not the feature list — the actual workflow that's broken and what it costs them today.",
+      "Start with whoever has the pain, not with a feature list. A warehouse that cannot tell what it has in stock is a problem worth solving; 'make a dashboard' is not.",
   },
   {
     step: "02",
-    title: "Map the smallest useful version",
+    title: "Cut it down to shippable",
     description:
-      "Decide what the first version must do to be worth using. Cut everything else. A small thing that works beats a big thing that doesn't ship.",
+      "Decide the smallest version that is genuinely useful, then build exactly that. A small app that people open every day beats a large one that is still in progress.",
   },
   {
     step: "03",
     title: "Build with AI as a pair",
     description:
-      "I write the intent and review the output. When the generated code is wrong, I fix it rather than accept it — that review step is the actual work.",
+      "I write the intent, review what comes back, and fix what is wrong. Reading the code and correcting it is the actual work — that step is what separates a demo from a product.",
   },
   {
     step: "04",
-    title: "Ship early, iterate in public",
+    title: "Deploy early, iterate on real usage",
     description:
-      "Deploy to a real URL as soon as it runs. Real usage surfaces what no planning session would, and fixes land in days rather than months.",
+      "Get it on a real domain fast. Real usage surfaces problems no planning session ever would, and the next fix lands in days instead of months.",
   },
 ];
 
 export const aboutParagraphs: string[] = [
-  "I build things that solve real, boring, expensive problems — a warehouse that loses track of stock, a factory floor without visibility, a parent unsure whether their kid is actually progressing.",
-  "I came to programming through vibe coding: describing what I need, collaborating with AI on the implementation, and iterating fast on real code until it works. That approach let me ship projects in domains I don't have formal experience in, which is how I ended up building for logistics and manufacturing.",
-  "What I care about is shipping. A deployed app that solves a narrow problem for a few people is worth more than a plan for a big one that never leaves the drawing board.",
+  "I build software for problems that are too boring for most developers and too expensive for most businesses to keep ignoring: where the fleet actually is, what the distribution team actually did, what the fuel actually cost, where the household money actually went.",
+  "I came to this through vibe coding rather than a traditional engineering path — describing the problem, collaborating with AI on the implementation, and iterating on real code until it worked. That approach let me ship products across logistics and finance without years of prior domain experience.",
+  "All four products listed here are live and running on real subdomains. Not demos, not prototypes — used software, with native mobile builds where the work happens away from a desk.",
 ];

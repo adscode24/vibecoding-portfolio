@@ -47,9 +47,8 @@ Append an entry to the `projects` array:
   status: "Live",              // "Live" shows a green dot, anything else grey
   stack: ["Next.js", "TypeScript"],
   highlights: ["Point one", "Point two"],
-  live: "https://my-app.vercel.app",   // optional
+  live: "https://my-app.example.com",   // optional
   repo: "https://github.com/user/repo", // optional
-  featured: true,                       // optional
 }
 ```
 

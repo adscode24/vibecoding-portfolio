@@ -1,4 +1,4 @@
-import { projects } from "@/data/site";
+import { projects, siteConfig } from "@/data/site";
 import { SectionHeading, SectionShell } from "@/components/section";
 import { Reveal } from "@/components/reveal";
 import { ProjectExplorer } from "@/components/sections/project-explorer";
@@ -20,9 +20,9 @@ export function Projects() {
 
       <Reveal>
         <p className="mt-10 text-sm text-muted">
-          Want the full source of everything I build?{" "}
+          Want to see how these are built?{" "}
           <a
-            href="https://github.com/adscode24"
+            href={siteConfig.github}
             target="_blank"
             rel="noreferrer noopener"
             className="font-medium text-ink underline underline-offset-4"
